@@ -2,7 +2,8 @@ FROM alpine:3.3
 
 ENV GOSU_VERSION 1.7
 
-RUN apk --update add \
+RUN set -x && \ 
+  apk --update add \
   bash ruby ruby-nokogiri git \
   build-base ruby-dev icu-dev zlib-dev && \
   gem install gollum github-markdown --no-ri --no-rdoc && \
