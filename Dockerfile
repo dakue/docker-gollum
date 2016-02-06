@@ -4,7 +4,7 @@ ENV GOSU_VERSION 1.7
 
 RUN set -x && \ 
   apk --update add \
-  bash ruby ruby-nokogiri git openssl-client \
+  bash ruby ruby-nokogiri git openssh-client \
   build-base ruby-dev icu-dev zlib-dev && \
   gem install gollum github-markdown --no-ri --no-rdoc && \
   apk --purge del ruby-dev build-base icu-dev zlib-dev && \
