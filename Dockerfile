@@ -11,8 +11,9 @@ RUN set -x && \
   apk add icu zlib && \
   rm -rf /var/cache/apk/*
 
-RUN addgroup gollum && \
-  adduser -g "Gollum wiki" -s /bin/bash -D -H -G gollum gollum 
+RUN set -x && \
+  addgroup gollum && \
+  adduser -g "Gollum wiki" -s /bin/bash -D -h /gollum -G gollum gollum 
 
 RUN curl -sSL "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-amd64" -o /usr/local/bin/gosu && \
   chmod +x /usr/local/bin/gosu
