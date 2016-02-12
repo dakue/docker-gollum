@@ -35,6 +35,11 @@ then
         chown -R gollum.gollum /gollum/wiki
     fi
 
+    if [ "$GOLLUM_BASE_PATH" != "" ]
+    then
+        OPTIONS="$OPTIONS --base-path $GOLLUM_BASE_PATH"
+    fi
+
     echo 'INFO: Starting gollum ...'
     exec /usr/local/bin/gosu gollum:gollum /usr/bin/gollum $OPTIONS
 fi
