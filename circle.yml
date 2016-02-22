@@ -10,4 +10,5 @@ test:
   override:
     - docker run -d -p 4567:4567 dakue/gollum
     - ( i=0; until nc -w 1 -q 0 localhost 4567; do echo $i; test $i -ge 5 && break; sleep 5; ((i++)); done ) || true
-    - curl -sSL -I -X GET http://localhost:4567 | grep -q "200 OK"
+    - curl -sSL -I -X GET http://localhost:4567 | grep -q "200 OK" && touch .passed
+    - if  [ ! -f .passed ]; then docker ps -a | sed -n '2{p;q}' | awk '{ print $1 }' | xargs docker logs; fi;
